@@ -14,11 +14,11 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, 
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import landscape
 from reportlab.lib.styles import ParagraphStyle
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
+# from selenium.webdriver.chrome.options import Options
+# from webdriver_manager.chrome import ChromeDriverManager
 
-def get_driver():
-    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=Options)
+# def get_driver():
+#     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=Options)
 
 st.title("eCourts Cause List Scraper")
 
@@ -34,17 +34,17 @@ if st.button("Fetch Cause List"):
     st.write("Launching browser...")
 
     # --- Selenium Setup ---
-    # driver_path = Service("/usr/local/bin/chromedriver")
-    # driver = webdriver.Chrome(service=driver_path)
+    driver_path = Service("/usr/local/bin/chromedriver")
+    driver = webdriver.Chrome(service=driver_path)
     
     # Auto-install ChromeDriver
-    chrome_options = Options()
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
+    # chrome_options = Options()
+    # chrome_options.add_argument("--no-sandbox")
+    # chrome_options.add_argument("--disable-dev-shm-usage")
     # chrome_options.add_argument("--headless")  # Optional: remove for visible browser
 
     # Path to chromium and chromedriver installed by packages.txt
-    driver = get_driver()    
+    # driver = get_driver()    
     
     driver.get("https://newdelhi.dcourts.gov.in/cause-list-%e2%81%84-daily-board/")
     time.sleep(3)  # wait for page to load
@@ -52,12 +52,12 @@ if st.button("Fetch Cause List"):
     # --- Select Court Complex ---
     court_complex_dropdown = Select(driver.find_element(By.ID, "est_code"))
     court_complex_dropdown.select_by_index(1)
-    time.sleep(2)
+    time.sleep(3)
 
     # --- Select Court Number ---
     court_number_dropdown = Select(driver.find_element(By.ID, "court"))
     court_number_dropdown.select_by_index(1)
-    time.sleep(2)
+    time.sleep(3)
 
     # --- Enter Cause List Date ---
     date_input = driver.find_element(By.ID, "date")

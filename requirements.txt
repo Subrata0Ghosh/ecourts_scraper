@@ -2,7 +2,7 @@ streamlit
 selenium
 pandas
 reportlab
-webdriver-manager
-chromium-browser
-chromium-chromedriver
+# webdriver-manager
+# chromium-browser
+# chromium-chromedriver
 
