@@ -2,4 +2,6 @@ streamlit
 selenium
 pandas
 reportlab
-chromedriver-autoinstaller
+chromium-browser
+chromium-chromedriver
+

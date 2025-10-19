@@ -14,7 +14,6 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, 
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import landscape
 from reportlab.lib.styles import ParagraphStyle
-import chromedriver_autoinstaller
 from selenium.webdriver.chrome.options import Options
 
 
@@ -37,9 +36,10 @@ if st.button("Fetch Cause List"):
     # driver = webdriver.Chrome(service=driver_path)
     
     # Auto-install ChromeDriver
-    chromedriver_autoinstaller.install()
     chrome_options = Options()
-    driver = webdriver.Chrome(options=chrome_options)
+    service = Service("/usr/bin/chromedriver")
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    
     
     driver.get("https://newdelhi.dcourts.gov.in/cause-list-%e2%81%84-daily-board/")
     time.sleep(3)  # wait for page to load
