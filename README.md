@@ -89,6 +89,13 @@ The app will automatically open in your web browser.
       * A PDF report for each section is automatically generated and saved in a new folder structure: `CauseLists/DD-MM-YYYY/`.
 
 -----
+## 📺 Demo Video
+
+A video demonstration of the scraping process, from input to PDF generation.
+
+Click the image below to watch the demo on YouTube:
+
+[![Watch the Demo Video](https://img.youtube.com/vi/wqGNrnuwonU/0.jpg)](https://youtu.be/wqGNrnuwonU)
 
 -----
 
