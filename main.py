@@ -15,7 +15,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import landscape
 from reportlab.lib.styles import ParagraphStyle
 from selenium.webdriver.chrome.options import Options
-
+import chromedriver_autoinstaller
 
 
 st.title("eCourts Cause List Scraper")
@@ -37,7 +37,13 @@ if st.button("Fetch Cause List"):
     
     # Auto-install ChromeDriver
     chrome_options = Options()
-    service = Service("/usr/bin/chromedriver")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    # chrome_options.add_argument("--headless")  # Optional: remove for visible browser
+
+    # Path to chromium and chromedriver installed by packages.txt
+    # service = Service("/usr/bin/chromedriver")   
+    service = Service(chromedriver_autoinstaller.install()) 
     driver = webdriver.Chrome(service=service, options=chrome_options)
     
     

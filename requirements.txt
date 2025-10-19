@@ -4,4 +4,5 @@ pandas
 reportlab
 chromium-browser
 chromium-chromedriver
+chromedriver_autoinstaller
 
