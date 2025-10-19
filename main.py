@@ -14,6 +14,10 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, 
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import landscape
 from reportlab.lib.styles import ParagraphStyle
+import chromedriver_autoinstaller
+from selenium.webdriver.chrome.options import Options
+
+
 
 st.title("eCourts Cause List Scraper")
 
@@ -29,8 +33,14 @@ if st.button("Fetch Cause List"):
     st.write("Launching browser...")
 
     # --- Selenium Setup ---
-    driver_path = Service("/usr/local/bin/chromedriver")
-    driver = webdriver.Chrome(service=driver_path)
+    # driver_path = Service("/usr/local/bin/chromedriver")
+    # driver = webdriver.Chrome(service=driver_path)
+    
+    # Auto-install ChromeDriver
+    chromedriver_autoinstaller.install()
+    chrome_options = Options()
+    driver = webdriver.Chrome(options=chrome_options)
+    
     driver.get("https://newdelhi.dcourts.gov.in/cause-list-%e2%81%84-daily-board/")
     time.sleep(3)  # wait for page to load
 
