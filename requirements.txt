@@ -1,0 +1,5 @@
+streamlit==1.26.0
+selenium==5.13.0
+chromedriver-autoinstaller==0.6.4
+pandas==2.2.0
+reportlab==4.1.0
