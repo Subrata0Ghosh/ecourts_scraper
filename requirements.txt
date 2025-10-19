@@ -3,4 +3,6 @@ selenium
 pandas
 reportlab
 webdriver-manager
+chromium-browser
+chromium-chromedriver
 
