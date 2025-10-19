@@ -15,8 +15,10 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import landscape
 from reportlab.lib.styles import ParagraphStyle
 from selenium.webdriver.chrome.options import Options
-import chromedriver_autoinstaller
+from webdriver_manager.chrome import ChromeDriverManager
 
+def get_driver():
+    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=Options)
 
 st.title("eCourts Cause List Scraper")
 
@@ -42,10 +44,7 @@ if st.button("Fetch Cause List"):
     # chrome_options.add_argument("--headless")  # Optional: remove for visible browser
 
     # Path to chromium and chromedriver installed by packages.txt
-    # service = Service("/usr/bin/chromedriver")   
-    service = Service(chromedriver_autoinstaller.install()) 
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    
+    driver = get_driver()    
     
     driver.get("https://newdelhi.dcourts.gov.in/cause-list-%e2%81%84-daily-board/")
     time.sleep(3)  # wait for page to load
